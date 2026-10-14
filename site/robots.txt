@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://modlindesigns.com/sitemap.xml
