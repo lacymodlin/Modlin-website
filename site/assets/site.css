@@ -47,9 +47,9 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:col
 .hero-art{position:relative;aspect-ratio:4/5;max-width:100%;border-radius:220px 220px 8px 8px;overflow:hidden;background:var(--terra)}
 .hero-art .sprig{position:absolute;inset:0}
 .hero-art .slot{position:absolute;inset:14%;background:color-mix(in srgb,var(--ivory) 88%,transparent);border-color:var(--terra);border-radius:160px 160px 6px 6px}
-.badge{position:absolute;left:-18px;bottom:28px;background:var(--paper);border-radius:6px;padding:.8rem 1rem;box-shadow:0 10px 30px rgba(27,42,74,.14);font-size:.85rem;line-height:1.35;max-width:210px}
+.badge{position:absolute;left:20px;bottom:28px;background:var(--paper);border-radius:6px;padding:.9rem 1.2rem;box-shadow:0 10px 30px rgba(27,42,74,.14);font-size:.85rem;line-height:1.35;max-width:210px}
 .badge b{display:block;font-family:var(--display);font-size:1.5rem;color:var(--terra)}
-@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.hero-art{max-width:420px;width:100%;justify-self:center}.badge{left:12px}}
+@media (max-width:820px){.hero-grid{grid-template-columns:1fr}.hero-art{max-width:420px;width:100%;justify-self:center}.badge{left:16px}}
 
 /* proof strip */
 .proof{background:var(--paper);border-block:1px solid var(--ivory-2)}
