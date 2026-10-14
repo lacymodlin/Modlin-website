@@ -61,4 +61,31 @@ PROJECTS = [
         ],
         "review": None,
     },
+    {
+        "slug": "sylva",
+        "title": "Sylva",
+        "category": "Concept brand · Natural skincare",
+        "card_tags": "Skincare · Logo & packaging",
+        "summary": "A concept identity for a plant-based skincare line. The goal was a brand that feels calm, clean and rooted in nature, without falling back on the rustic kraft-paper look so many natural brands share.",
+        "meta": [
+            ("Client", "Concept project, natural skincare"),
+            ("Services", "Logo suite, color palette, brand pattern"),
+            ("Deliverables", "Wordmark, leaf mark, packaging mockup"),
+        ],
+        "cover": ("cover.jpg", "A Sylva face cream jar with a silver lid on a tree stump surrounded by moss and leaves"),
+        "card": "card.jpg",
+        "story": [
+            ("The brief", "Sylva is a small-batch line of botanical creams and serums for people who want simple, plant-based skincare. The brand had to look gentle and trustworthy next to big-name jars on a shelf, feel natural without looking homemade, and leave room to grow into new products."),
+            ("The approach", "The name comes from the Latin word for forest, so the leaf became the heart of the identity. I built the mark from faceted segments in three greens, like sunlight breaking through leaves, and tucked it into the wordmark so the leaf grows right out of the \"v.\" Wide, airy letter spacing keeps the type calm and modern, and the palette runs from deep moss to soft mint so every piece feels fresh but grounded."),
+            ("The result", "A complete logo suite with a wordmark and a standalone leaf mark, a three-green palette, and a leaf pattern for tissue paper, boxes and social posts. The mark holds up from a jar label down to a favicon, and it's flexible enough to color-code future products."),
+        ],
+        "gallery": [
+            ("logo-suite.jpg", "The Sylva wordmark and leaf mark in four versions on white, deep green, cream and sage", "wide"),
+            ("palette.jpg", "The Sylva color palette of moss, sage, mint and white", "half"),
+            ("business-cards.jpg", "Sylva business cards, one deep green with a white leaf and one white with the green wordmark", "half"),
+            ("scale-test.jpg", "The leaf mark and wordmark shown from large sizes down to a 16 pixel favicon", "half"),
+            ("pattern.jpg", "A repeating leaf pattern on deep green with the Sylva wordmark on a white label", "half"),
+        ],
+        "review": None,
+    },
 ]

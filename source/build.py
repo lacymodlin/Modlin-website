@@ -120,7 +120,7 @@ def project_page(p, nxt):
     <nav class="next" aria-label="More projects"><a href="/#work"><span>Back</span>All work</a>{nxt_link}</nav>
   </div></main>"""
 
-def work_cards(total=6):
+def work_cards(total=0):
     cards = [f'<a class="proj" href="/projects/{p["slug"]}/"><div class="cover"><img src="/assets/projects/{p["slug"]}/{p["card"]}" alt="{esc(p["title"])} project cover" loading="lazy"></div><h3>{esc(p["title"])}</h3><span>{esc(p["card_tags"])}</span></a>' for p in PROJECTS]
     while len(cards) < total:
         cards.append('<div class="proj"><div class="cover"><div class="slot">Project cover</div></div><h3>Project title</h3><span>Coming soon</span></div>')
