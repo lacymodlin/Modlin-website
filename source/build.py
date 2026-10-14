@@ -132,6 +132,7 @@ def build():
     shutil.copy(os.path.join(HERE,'site.css'),OUT+'/assets/site.css')
     shutil.copy(A+'/MontHeavy.otf',OUT+'/assets/fonts/MontHeavy.otf')
     shutil.copy(A+'/email-header.png',OUT+'/assets/img/email-header.png')
+    for f in os.listdir(A+'/img'): shutil.copy(A+'/img/'+f,OUT+'/assets/img/'+f)
     logo=open(A+'/logo.svg').read().replace('stroke: #000;','stroke: #B5543A; fill: #B5543A;')
     open(OUT+'/assets/img/favicon.svg','w').write(logo)
 
