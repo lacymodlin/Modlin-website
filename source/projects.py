@@ -31,4 +31,34 @@ PROJECTS = [
         ],
         "review": None,  # ("quote", "Name, Business")
     },
+    {
+        "slug": "the-road-continues",
+        "title": "The Road Continues",
+        "category": "Nonprofit rebrand & print collateral",
+        "card_tags": "Website · Print · Presentations",
+        "summary": "A 501(c)(3) that gives women professional clothing for interviews, court dates, new jobs and fresh starts. Over several projects I pulled its website, print pieces and presentations into one consistent look built around a single image: an open road at sunrise.",
+        "meta": [
+            ("Client", "Nonprofit, Women Helping Women"),
+            ("Services", "Website refresh, print design, presentations"),
+            ("Deliverables", "Website, postcards, table sign, business cards, donation receipts, slide decks"),
+        ],
+        "cover": ("cover.jpg", "The Road Continues postcard and tabletop sign, both featuring a sunlit open road with gold type"),
+        "card": "card.jpg",
+        "story": [
+            ("The challenge", "The founder didn't want a logo. She wanted one photo, a quiet road heading into the sunrise, to carry the brand, because it says exactly what the organization does: helps women keep going. Her materials had grown piece by piece, so the website, handouts and decks didn't feel like they came from the same place."),
+            ("The approach", "With no logo to lean on, consistency had to come from everything else. I let the road photo do the heavy lifting on every printed piece and paired it with two colors pulled from it, a warm gold and a deep charcoal, plus the same clean sans-serif type throughout. The mission line, \"When a woman looks confident, she feels confident,\" shows up wherever there is room for it, and QR codes connect each print piece back to the website and donations."),
+            ("The result", "A refreshed website and a full family of materials that read as one organization: postcards, a tabletop sign for donation drives, business cards, a branded donation receipt with the tax ID donors need, and presentation decks for events like National Women's History Month, all ready as it expands beyond California."),
+        ],
+        "gallery": [
+            ("website.jpg", "The Road Continues website homepage with an Empowering Women headline beside the road photo", "wide"),
+            ("web-about.jpg", "The About Us and Who We Serve sections of the website in charcoal and gold", "half"),
+            ("web-national.jpg", "The website's Going National map showing locations in California, Washington, Arizona and South Dakota", "half"),
+            ("postcards.jpg", "Front and back of The Road Continues postcard, with the mission statement and a donation QR code", "wide"),
+            ("sign.jpg", "A tabletop sign with a QR code inviting people to scan, learn more and give", "half"),
+            ("business-cards.jpg", "Front and back of the business card with the road photo, gold type and a QR code", "half"),
+            ("receipt.jpg", "The branded donation receipt with spaces for date, items donated and dollar value", "half"),
+            ("deck.jpg", "Six slides from the presentation deck in charcoal and gold", "half"),
+        ],
+        "review": None,
+    },
 ]
