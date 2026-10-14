@@ -196,29 +196,39 @@
       <form name="inquiry" method="POST" action="/thanks/" data-netlify="true" netlify-honeypot="company_website">
         <input type="hidden" name="form-name" value="inquiry">
         <p class="hp"><label>Leave this empty <input name="company_website" tabindex="-1" autocomplete="off"></label></p>
-        <div class="f"><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required></div>
-        <div class="f"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" required></div>
-        <div class="f full"><label for="biz">Business name</label><input id="biz" name="business_name" required></div>
-        <div class="f full"><label for="about-biz">Tell me about your business</label><textarea id="about-biz" name="about_business" required></textarea></div>
-        <div class="f full"><span class="lbl">What services do you need?</span>
+        <div class="f"><label for="name">Your name</label><input id="name" name="Contact Name" autocomplete="name" required></div>
+        <div class="f"><label for="email">Email</label><input id="email" name="Email" type="email" autocomplete="email" required></div>
+        <div class="f"><label for="biz">Business name</label><input id="biz" name="Business name" autocomplete="organization" required></div>
+        <div class="f"><label for="phone">Phone number <span style="font-weight:400">(optional)</span></label><input id="phone" name="Phone number" type="tel" autocomplete="tel"></div>
+        <div class="f full"><label for="about-biz">Tell me about your business</label><textarea id="about-biz" name="Tell me about your business" required></textarea></div>
+        <div class="f full"><label for="services">What services do you need?</label><textarea id="services" name="What services do you need?" required></textarea></div>
+        <div class="f full"><span class="lbl">What's prompting you to reach out now?</span>
           <div class="chips">
-            <label><input type="checkbox" name="services[]" value="Brand identity">Brand identity</label>
-            <label><input type="checkbox" name="services[]" value="Packaging design">Packaging design</label>
-            <label><input type="checkbox" name="services[]" value="Launch campaign">Launch campaign</label>
-            <label><input type="checkbox" name="services[]" value="Website">Website</label>
-            <label><input type="checkbox" name="services[]" value="Not sure yet">Not sure yet</label>
+            <label><input type="radio" name="What's prompting you to reach out now?" value="Rebranding an existing business">Rebranding an existing business</label>
+            <label><input type="radio" name="What's prompting you to reach out now?" value="Launching a new business">Launching a new business</label>
+            <label><input type="radio" name="What's prompting you to reach out now?" value="Launching a new product or service">Launching a new product or service</label>
+            <label><input type="radio" name="What's prompting you to reach out now?" value="Other">Other</label>
           </div>
         </div>
-        <div class="f full"><label for="why">What's prompting you to reach out now?</label><textarea id="why" name="reason"></textarea></div>
         <div class="f full"><span class="lbl">Budget</span>
           <div class="chips">
-            <label><input type="radio" name="budget" value="Under $2700">Under $2,700</label>
-            <label><input type="radio" name="budget" value="$2700 to $4800">$2,700 to $4,800</label>
-            <label><input type="radio" name="budget" value="$4800 to $8000">$4,800 to $8,000</label>
-            <label><input type="radio" name="budget" value="$8000+">$8,000+</label>
+            <label><input type="checkbox" name="Budget" value="$2800 – $4000">$2800 – $4000</label>
+            <label><input type="checkbox" name="Budget" value="$4000 – $6000">$4000 – $6000</label>
+            <label><input type="checkbox" name="Budget" value="$6000 – $9000">$6000 – $9000</label>
           </div>
         </div>
-        <div class="f full"><label for="heard">How did you hear about me?</label><input id="heard" name="heard_about"></div>
+        <div class="f full"><span class="lbl">How did you hear about me?</span>
+          <div class="chips">
+            <label><input type="radio" name="How did you hear about me?" value="Social media ad">Social media ad</label>
+            <label><input type="radio" name="How did you hear about me?" value="Instagram">Instagram</label>
+            <label><input type="radio" name="How did you hear about me?" value="TikTok">TikTok</label>
+            <label><input type="radio" name="How did you hear about me?" value="Facebook">Facebook</label>
+            <label><input type="radio" name="How did you hear about me?" value="Google search">Google search</label>
+            <label><input type="radio" name="How did you hear about me?" value="My website">My website</label>
+            <label><input type="radio" name="How did you hear about me?" value="Referral / word of mouth">Referral / word of mouth</label>
+            <label><input type="radio" name="How did you hear about me?" value="Other">Other</label>
+          </div>
+        </div>
         <button class="btn btn-fill" type="submit">Send inquiry</button>
       </form>
     </div>
