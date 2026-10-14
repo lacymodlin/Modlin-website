@@ -212,3 +212,6 @@ form .btn{justify-self:start;cursor:pointer;font-family:inherit}
 .shot img,.proj .cover img{display:block;width:100%;height:100%;object-fit:cover;border-radius:8px}
 .proj .cover img{border-radius:6px}
 .case-quote blockquote{margin:0;max-width:40em;font-size:1.2rem}
+.quotes.two{grid-template-columns:repeat(2,1fr)}
+.quote blockquote{margin:0;flex:1;font-size:1.05rem;line-height:1.6}
+@media (max-width:900px){.quotes.two{grid-template-columns:1fr}}
