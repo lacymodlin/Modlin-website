@@ -5,6 +5,7 @@ gallery items: (file, alt text, "wide" or "half")."""
 PROJECTS = [
     {
         "slug": "a-purple-house",
+        "seo_title": "Logo Design",
         "title": "A Purple House",
         "category": "Logo suite & brand identity",
         "card_tags": "Logo suite · Brand identity",
@@ -33,6 +34,7 @@ PROJECTS = [
     },
     {
         "slug": "the-road-continues",
+        "seo_title": "Nonprofit Rebrand",
         "title": "The Road Continues",
         "category": "Nonprofit rebrand & print collateral",
         "card_tags": "Website · Print · Presentations",
@@ -63,6 +65,7 @@ PROJECTS = [
     },
     {
         "slug": "sylva",
+        "seo_title": "Skincare Brand Concept",
         "title": "Sylva",
         "category": "Concept brand · Natural skincare",
         "card_tags": "Skincare · Logo & packaging",

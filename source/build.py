@@ -10,18 +10,33 @@ P=lambda n: open(os.path.join(HERE,n)).read()
 A=os.path.join(HERE,'assets')
 
 DISCOVERY='https://calendar.app.google/HnmJ462Fce4tVTCG9'
+SITE='https://modlindesigns.com'
+INSTAGRAM='https://www.instagram.com/modlindesigns/'
 
-def page(title, desc, body, path_depth=0):
+def page(title, desc, body, path='/', image='/assets/img/og-image.jpg', jsonld=None, noindex=False, og_type='website'):
+    ld=''.join(f'<script type="application/ld+json">{json.dumps(j,ensure_ascii=False)}</script>\n' for j in (jsonld or []))
+    robots='<meta name="robots" content="noindex">\n' if noindex else ''
     return f'''<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>{title}</title>
-<meta name="description" content="{desc}">
-<meta property="og:title" content="{title}">
-<meta property="og:description" content="{desc}">
-<meta property="og:type" content="website">
+<title>{esc(title)}</title>
+<meta name="description" content="{esc(desc)}">
+{robots}<link rel="canonical" href="{SITE}{path}">
+<meta name="theme-color" content="#1B2A4A">
+<meta property="og:site_name" content="Modlin Designs">
+<meta property="og:title" content="{esc(title)}">
+<meta property="og:description" content="{esc(desc)}">
+<meta property="og:type" content="{og_type}">
+<meta property="og:url" content="{SITE}{path}">
+<meta property="og:image" content="{SITE}{image}">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{esc(title)}">
+<meta name="twitter:description" content="{esc(desc)}">
+<meta name="twitter:image" content="{SITE}{image}">
+{ld}
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -47,7 +62,7 @@ def page(title, desc, body, path_depth=0):
   <svg class="sprig" width="100%" height="100%" aria-hidden="true" style="position:absolute;inset:0;opacity:.12"><rect width="100%" height="100%" fill="url(#sprig)"/></svg>
   <div class="wrap">
     <a class="brand" href="/"><svg><use href="#logo"/></svg>Modlin Designs</a>
-    <nav><a href="/#work">Work</a><a href="/#services">Services</a><a href="/#about">About</a><a href="/#inquire">Inquire</a><a href="BEHANCE_URL" rel="noopener">Behance</a><a href="INSTAGRAM_URL" rel="noopener">Instagram</a></nav>
+    <nav><a href="/#work">Work</a><a href="/#services">Services</a><a href="/#about">About</a><a href="/#inquire">Inquire</a><a href="{INSTAGRAM}" rel="noopener me" target="_blank">Instagram</a></nav>
     <small>lacy@modlindesigns.com · © 2026 Modlin Designs</small>
   </div>
 </footer>
@@ -144,23 +159,44 @@ def build():
     home=home.replace('href="#inquire"','href="/#inquire"').replace('href="#work"','href="/#work"')
     home='<main id="top">'+home+'</main>'
     w=lambda rel,html: (os.makedirs(os.path.dirname(OUT+'/'+rel),exist_ok=True), open(OUT+'/'+rel,'w').write(html))
-    w('index.html',page('Modlin Designs | Branding & Packaging for Natural Beauty Brands',
-        'Brand identity and packaging design for clean skincare, cosmetics and wellness founders. Packages from $2,700.',home))
+    biz={"@context":"https://schema.org","@type":"ProfessionalService","@id":SITE+"/#business","name":"Modlin Designs","url":SITE+"/",
+        "logo":SITE+"/assets/img/favicon.svg","image":SITE+"/assets/img/og-image.jpg","email":"lacy@modlindesigns.com",
+        "description":"Brand identity and packaging design for natural skincare, cosmetics and wellness brands.",
+        "address":{"@type":"PostalAddress","addressLocality":"Newbury Park","addressRegion":"CA","addressCountry":"US"},
+        "areaServed":"United States","priceRange":"$$$","founder":{"@id":SITE+"/#lacy"},"sameAs":[INSTAGRAM],
+        "knowsAbout":["Brand identity design","Packaging design","Logo design","Skincare branding","Cosmetics branding","Brand strategy"]}
+    person={"@context":"https://schema.org","@type":"Person","@id":SITE+"/#lacy","name":"Lacy Modlin","jobTitle":"Brand Designer","worksFor":{"@id":SITE+"/#business"},"url":SITE+"/#about","sameAs":[INSTAGRAM]}
+    site={"@context":"https://schema.org","@type":"WebSite","name":"Modlin Designs","url":SITE+"/"}
+    w('index.html',page('Modlin Designs | Brand & Packaging Designer for Natural Beauty Brands',
+        'Lacy Modlin designs brand identities and packaging for natural skincare, cosmetics and wellness brands. Strategy-led branding packages from $2,700.',home,
+        jsonld=[biz,person,site]))
 
     for i,p in enumerate(PROJECTS):
         shutil.copytree(os.path.join(A,'projects',p['slug']),OUT+'/assets/projects/'+p['slug'])
         nxt=PROJECTS[(i+1)%len(PROJECTS)] if len(PROJECTS)>1 else None
-        w(f"projects/{p['slug']}/index.html",page(f"{p['title']} | Modlin Designs",p['summary'][:155],project_page(p,nxt)))
+        path=f"/projects/{p['slug']}/"
+        desc=p['summary'] if len(p['summary'])<=158 else p['summary'][:155].rsplit(' ',1)[0]+'…'
+        work={"@context":"https://schema.org","@type":"CreativeWork","name":p['title'],"headline":f"{p['title']}: {p['category']}","description":p['summary'],
+              "url":SITE+path,"image":SITE+f"/assets/projects/{p['slug']}/{p['cover'][0]}","genre":p['category'],
+              "creator":{"@type":"Person","name":"Lacy Modlin","url":SITE+"/#about"},"publisher":{"@type":"Organization","name":"Modlin Designs","url":SITE+"/"}}
+        crumbs={"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+              {"@type":"ListItem","position":1,"name":"Home","item":SITE+"/"},
+              {"@type":"ListItem","position":2,"name":"Work","item":SITE+"/#work"},
+              {"@type":"ListItem","position":3,"name":p['title'],"item":SITE+path}]}
+        w(f"projects/{p['slug']}/index.html",page(f"{p['title']} {p.get('seo_title','Brand Design')} | Modlin Designs",desc,project_page(p,nxt),
+            path=path,image=f"/assets/projects/{p['slug']}/{p['cover'][0]}",jsonld=[work,crumbs],og_type='article'))
 
     thanks=f'''<main><div class="wrap"><section class="simple">
 <p class="eyebrow">Inquiry received</p><h1>Thank you! I'll be in touch soon.</h1>
 <p>Keep an eye on your inbox for a note from lacy@modlindesigns.com. In the meantime, feel free to look through more of my work.</p>
 <a class="btn btn-fill" href="/#work">See my work</a></section></div></main>'''
-    w('thanks/index.html',page('Thank you | Modlin Designs','Your inquiry was sent.',thanks))
+    w('thanks/index.html',page('Thank you | Modlin Designs','Your inquiry was sent.',thanks,path='/thanks/',noindex=True))
     nf='''<main><div class="wrap"><section class="simple"><p class="eyebrow">Page not found</p><h1>This page wandered off.</h1>
 <p>Let's get you back on track.</p><a class="btn btn-fill" href="/">Go to the home page</a></section></div></main>'''
-    w('404.html',page('Page not found | Modlin Designs','Page not found.',nf))
+    w('404.html',page('Page not found | Modlin Designs','Page not found.',nf,noindex=True))
     w('robots.txt','User-agent: *\nAllow: /\nSitemap: https://modlindesigns.com/sitemap.xml\n')
-    w('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n<url><loc>https://modlindesigns.com/</loc></url>\n</urlset>\n')
+    import datetime; today=datetime.date.today().isoformat()
+    urls=['/']+[f"/projects/{p['slug']}/" for p in PROJECTS]
+    w('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+''.join(f'<url><loc>{SITE}{u}</loc><lastmod>{today}</lastmod></url>\n' for u in urls)+'</urlset>\n')
 
 if __name__=='__main__': build(); print('built',OUT)
