@@ -68,7 +68,7 @@ PROJECTS = [
         "seo_title": "Skincare Brand Concept",
         "title": "Sylva",
         "category": "Concept brand · Natural skincare",
-        "card_tags": "Skincare · Logo & packaging",
+        "card_tags": "Logo suite · Palette · Brand pattern",
         "summary": "A concept identity for a plant-based skincare line. The goal was a brand that feels calm, clean and rooted in nature, without falling back on the rustic kraft-paper look so many natural brands share.",
         "meta": [
             ("Client", "Concept project, natural skincare"),
