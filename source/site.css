@@ -226,3 +226,11 @@ form .btn{justify-self:start;cursor:pointer;font-family:inherit}
 .portal-bar b{margin-left:10px;color:var(--ivory,#F3EDE4);font-size:.8rem;font-weight:600;letter-spacing:.04em}
 .portal-demo video{display:block;width:100%;height:auto;background:#191919;border-radius:0 0 12px 12px;box-shadow:0 18px 40px rgba(27,42,74,.18)}
 .portal-demo figcaption{margin-top:.9rem;text-align:center;font-size:.9rem;color:var(--navy-soft)}
+.portal-intro{max-width:760px;margin:clamp(48px,7vw,80px) auto 0;text-align:center}
+.portal-intro h3{font-family:var(--display);font-size:clamp(1.5rem,2.8vw,2rem);color:var(--navy);margin:0 0 .7rem}
+.portal-intro p{color:var(--navy-soft);margin:0 auto 1.4rem}
+.portal-intro ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.6rem;text-align:left}
+.portal-intro li{font-size:.95rem;color:var(--navy-soft);padding-left:1.1rem;border-left:2px solid var(--terra-line)}
+.portal-intro li b{display:block;color:var(--navy)}
+.portal-intro + .portal-demo{margin-top:clamp(28px,4vw,40px)}
+@media (max-width:620px){.portal-intro ul{grid-template-columns:1fr}}
