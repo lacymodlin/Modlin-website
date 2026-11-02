@@ -112,7 +112,7 @@ section.block{padding-block:clamp(56px,8vw,104px)}
 
 /* about */
 .about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(32px,5vw,72px);align-items:center}
-.about .slot{aspect-ratio:1;max-width:100%;border-radius:50% 50% 8px 8px;background:var(--paper)}
+.about .slot{aspect-ratio:4/5;max-width:100%;border-radius:50% 50% 8px 8px;background:var(--paper)}
 .about .copy{display:grid;gap:1rem;max-width:36em}
 .about h2{font-size:clamp(1.9rem,3.6vw,2.6rem)}
 .about .copy p{color:var(--navy-soft)}
