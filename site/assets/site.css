@@ -249,3 +249,5 @@ form .btn{justify-self:start;cursor:pointer;font-family:inherit}
 .portal-intro li b{display:block;color:var(--navy)}
 .portal-intro + .portal-demo{margin-top:clamp(28px,4vw,40px)}
 @media (max-width:620px){.portal-intro ul{grid-template-columns:1fr}}
+html{scroll-padding-top:84px;scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
