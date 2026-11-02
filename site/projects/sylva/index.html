@@ -18,7 +18,7 @@
 <meta name="twitter:title" content="Sylva Skincare Brand Concept | Modlin Designs">
 <meta name="twitter:description" content="A concept identity for a plant-based skincare line. The goal was a brand that feels calm, clean and rooted in nature, without falling back on the rustic…">
 <meta name="twitter:image" content="https://modlindesigns.com/assets/projects/sylva/cover.jpg">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Sylva", "headline": "Sylva: Concept brand · Natural skincare", "description": "A concept identity for a plant-based skincare line. The goal was a brand that feels calm, clean and rooted in nature, without falling back on the rustic kraft-paper look so many natural brands share.", "url": "https://modlindesigns.com/projects/sylva/", "image": "https://modlindesigns.com/assets/projects/sylva/cover.jpg", "genre": "Concept brand · Natural skincare", "creator": {"@type": "Person", "name": "Lacy Modlin", "url": "https://modlindesigns.com/#about"}, "publisher": {"@type": "Organization", "name": "Modlin Designs", "url": "https://modlindesigns.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "CreativeWork", "name": "Sylva", "headline": "Sylva: Concept brand · Logo suite & brand identity", "description": "A concept identity for a plant-based skincare line. The goal was a brand that feels calm, clean and rooted in nature, without falling back on the rustic kraft-paper look so many natural brands share.", "url": "https://modlindesigns.com/projects/sylva/", "image": "https://modlindesigns.com/assets/projects/sylva/cover.jpg", "genre": "Concept brand · Logo suite & brand identity", "creator": {"@type": "Person", "name": "Lacy Modlin", "url": "https://modlindesigns.com/#about"}, "publisher": {"@type": "Organization", "name": "Modlin Designs", "url": "https://modlindesigns.com/"}}</script>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://modlindesigns.com/"}, {"@type": "ListItem", "position": 2, "name": "Work", "item": "https://modlindesigns.com/#work"}, {"@type": "ListItem", "position": 3, "name": "Sylva", "item": "https://modlindesigns.com/projects/sylva/"}]}</script>
 
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
@@ -42,19 +42,28 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="/" aria-label="Modlin Designs home"><svg><use href="#logo"/></svg>Modlin Designs</a>
-    <ul>
+    <ul id="nav-links">
       <li><a href="/#work">Work</a></li>
       <li><a href="/#services">Services</a></li>
+      <li><a href="/#process">Process</a></li>
       <li><a href="/#about">About</a></li>
       <li><a href="/#reviews">Reviews</a></li>
     </ul>
-    <a class="btn btn-fill" href="/#inquire">Start your inquiry</a>
+    <a class="btn btn-fill" href="/#inquire"><span class="long">Start your inquiry</span><span class="short">Inquire</span></a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
   </div>
 </header>
+<script>
+(function(){var h=document.querySelector('header'),b=h.querySelector('.menu-btn');
+function set(o){h.classList.toggle('open',o);b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',function(){set(!h.classList.contains('open'))});
+h.querySelectorAll('#nav-links a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});})();
+</script>
 <main><div class="wrap">
     <section class="case-hero">
       <p class="crumb"><a href="/#work">Work</a><span>/</span><span>Sylva</span></p>
-      <p class="eyebrow">Concept brand · Natural skincare</p>
+      <p class="eyebrow">Concept brand · Logo suite &amp; brand identity</p>
       <h1>Sylva</h1>
       <p class="lede">A concept identity for a plant-based skincare line. The goal was a brand that feels calm, clean and rooted in nature, without falling back on the rustic kraft-paper look so many natural brands share.</p>
       <dl class="meta"><div><dt>Client</dt><dd>Concept project, natural skincare</dd></div><div><dt>Services</dt><dd>Logo suite, color palette, brand pattern</dd></div><div><dt>Deliverables</dt><dd>Wordmark, leaf mark, packaging mockup</dd></div></dl>

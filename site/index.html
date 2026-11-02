@@ -43,15 +43,24 @@
 <header>
   <div class="wrap nav">
     <a class="brand" href="/" aria-label="Modlin Designs home"><svg><use href="#logo"/></svg>Modlin Designs</a>
-    <ul>
+    <ul id="nav-links">
       <li><a href="/#work">Work</a></li>
       <li><a href="/#services">Services</a></li>
+      <li><a href="/#process">Process</a></li>
       <li><a href="/#about">About</a></li>
       <li><a href="/#reviews">Reviews</a></li>
     </ul>
-    <a class="btn btn-fill" href="/#inquire">Start your inquiry</a>
+    <a class="btn btn-fill" href="/#inquire"><span class="long">Start your inquiry</span><span class="short">Inquire</span></a>
+    <button class="menu-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="nav-links"><span></span><span></span><span></span></button>
   </div>
 </header>
+<script>
+(function(){var h=document.querySelector('header'),b=h.querySelector('.menu-btn');
+function set(o){h.classList.toggle('open',o);b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',function(){set(!h.classList.contains('open'))});
+h.querySelectorAll('#nav-links a').forEach(function(a){a.addEventListener('click',function(){set(false)})});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')set(false)});})();
+</script>
 <main id="top">
   <section class="hero">
     <div class="wrap hero-grid">
