@@ -13,9 +13,10 @@ DISCOVERY='https://calendar.app.google/HnmJ462Fce4tVTCG9'
 SITE='https://modlindesigns.com'
 INSTAGRAM='https://www.instagram.com/modlindesigns/'
 
-def page(title, desc, body, path='/', image='/assets/img/og-image.jpg', jsonld=None, noindex=False, og_type='website'):
+def page(title, desc, body, path='/', image='/assets/img/og-image.jpg', jsonld=None, noindex=False, og_type='website', canonical=True):
     ld=''.join(f'<script type="application/ld+json">{json.dumps(j,ensure_ascii=False)}</script>\n' for j in (jsonld or []))
     robots='<meta name="robots" content="noindex">\n' if noindex else ''
+    canon=f'<link rel="canonical" href="{SITE}{path}">\n' if canonical else ''
     return f'''<!doctype html>
 <html lang="en">
 <head>
@@ -23,8 +24,7 @@ def page(title, desc, body, path='/', image='/assets/img/og-image.jpg', jsonld=N
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(desc)}">
-{robots}<link rel="canonical" href="{SITE}{path}">
-<meta name="theme-color" content="#1B2A4A">
+{robots}{canon}<meta name="theme-color" content="#1B2A4A">
 <meta property="og:site_name" content="Modlin Designs">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(desc)}">
@@ -72,6 +72,7 @@ document.addEventListener('keydown',function(e){{if(e.key==='Escape')set(false)}
   <div class="wrap">
     <a class="brand" href="/"><svg><use href="#logo"/></svg>Modlin Designs</a>
     <nav><a href="/#work">Work</a><a href="/#services">Services</a><a href="/#about">About</a><a href="/#inquire">Inquire</a><a href="{INSTAGRAM}" rel="noopener me" target="_blank">Instagram</a></nav>
+    <small>Brand &amp; graphic designer for natural beauty brands · Based in Newbury Park, California, working with brands across the US</small>
     <small>lacy@modlindesigns.com · © 2026 Modlin Designs</small>
   </div>
 </footer>
@@ -145,7 +146,7 @@ def project_page(p, nxt):
   </div></main>"""
 
 def work_cards(total=0):
-    cards = [f'<a class="proj" href="/projects/{p["slug"]}/"><div class="cover"><img src="/assets/projects/{p["slug"]}/{p["card"]}" alt="{esc(p["title"])} project cover" loading="lazy"></div><h3>{esc(p["title"])}</h3><span>{esc(p["card_tags"])}</span></a>' for p in PROJECTS]
+    cards = [f'<a class="proj" href="/projects/{p["slug"]}/"><div class="cover"><img src="/assets/projects/{p["slug"]}/{p["card"]}" alt="{esc(p["title"])} brand design by Modlin Designs: {esc(p["card_tags"])}" loading="lazy"></div><h3>{esc(p["title"])}</h3><span>{esc(p["card_tags"])}</span></a>' for p in PROJECTS]
     while len(cards) < total:
         cards.append('<div class="proj"><div class="cover"><div class="slot">Project cover</div></div><h3>Project title</h3><span>Coming soon</span></div>')
     return '\n        '.join(cards)
@@ -173,7 +174,7 @@ def build():
         "description":"Brand identity and packaging design for natural skincare, cosmetics and wellness brands.",
         "address":{"@type":"PostalAddress","addressLocality":"Newbury Park","addressRegion":"CA","addressCountry":"US"},
         "areaServed":"United States","priceRange":"$$$","founder":{"@id":SITE+"/#lacy"},"sameAs":[INSTAGRAM],
-        "knowsAbout":["Brand identity design","Packaging design","Logo design","Skincare branding","Cosmetics branding","Brand strategy"]}
+        "knowsAbout":["Brand identity design","Packaging design","Logo design","Graphic design","Skincare branding","Cosmetics branding","Clean beauty branding","Brand strategy"]}
     person={"@context":"https://schema.org","@type":"Person","@id":SITE+"/#lacy","name":"Lacy Modlin","jobTitle":"Brand Designer","worksFor":{"@id":SITE+"/#business"},"url":SITE+"/#about","sameAs":[INSTAGRAM]}
     site={"@context":"https://schema.org","@type":"WebSite","name":"Modlin Designs","url":SITE+"/"}
     w('index.html',page('Modlin Designs | Brand & Packaging Designer for Natural Beauty Brands',
@@ -202,7 +203,7 @@ def build():
     w('thanks/index.html',page('Thank you | Modlin Designs','Your inquiry was sent.',thanks,path='/thanks/',noindex=True))
     nf='''<main><div class="wrap"><section class="simple"><p class="eyebrow">Page not found</p><h1>This page wandered off.</h1>
 <p>Let's get you back on track.</p><a class="btn btn-fill" href="/">Go to the home page</a></section></div></main>'''
-    w('404.html',page('Page not found | Modlin Designs','Page not found.',nf,noindex=True))
+    w('404.html',page('Page not found | Modlin Designs','Page not found.',nf,noindex=True,canonical=False))
     w('robots.txt','User-agent: *\nAllow: /\nSitemap: https://modlindesigns.com/sitemap.xml\n')
     import datetime; today=datetime.date.today().isoformat()
     urls=['/']+[f"/projects/{p['slug']}/" for p in PROJECTS]
