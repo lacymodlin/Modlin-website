@@ -11,6 +11,7 @@ A=os.path.join(HERE,'assets')
 
 DISCOVERY='https://calendar.app.google/HnmJ462Fce4tVTCG9'
 SITE='https://modlindesigns.com'
+GA_ID='G-ZZ0NEK3RG8'  # Google Analytics 4 measurement ID
 INSTAGRAM='https://www.instagram.com/modlindesigns/'
 
 def page(title, desc, body, path='/', image='/assets/img/og-image.jpg', jsonld=None, noindex=False, og_type='website'):
@@ -19,6 +20,14 @@ def page(title, desc, body, path='/', image='/assets/img/og-image.jpg', jsonld=N
     return f'''<!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={GA_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){{dataLayer.push(arguments);}}
+  gtag('js', new Date());
+  gtag('config', '{GA_ID}');
+</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{esc(title)}</title>
